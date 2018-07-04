@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel=stylesheet type="text/css" href="{{ url_for('static', filename= 'style.css') }}" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Flawless Cosmetics</title>
+</head>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Flawless Cosmetics</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{url_for( 'gdisconnect')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                    <li class="active"><a href="{{url_for( 'index')}}">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="container">
+            <h1>Welcome to Flawless Cosmetics!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea mod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ut aliquip ex ea</p>
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <li> <strong> {{ message }}</strong></li>
+        {% endfor %} {% endif %} {% endwith %}
+    </ul>
+</div>
+
+
+<div class="container">
+    <div class="col-lg-3 col-md-4 col-xs-6">
+        <a href="#" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src=../static/images/brush.jpg width="400" height="300" alt="">
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+        <a href="#" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src=../static/images/lipstick.jpg width="400" height="300" alt="">
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+        <a href="#" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src=../static/images/eyeshadow.jpg width="400" height="300" alt="">
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-xs-6">
+        <a href="#" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src=../static/images/prettynails.png width="400" height="300" alt="">
+        </a>
+    </div>
+</div>
+<!-- Four equal columns -->
+{% for i in category %}
+<section class="container">
+    <div class="col-lg-3 col-md-4 col-xs-6 ">
+        <div class="thumbnail">
+            <div class="caption">
+                <a href="{{url_for('showCategoryItems', category_id = i.id)}}" class="d-block mb-4 h-100">
+                    <h3>{{i.name}}</h3>
+                </a>
+                <p>{{i.description}}</p>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</section>
+
+</body>
+
+</html>
