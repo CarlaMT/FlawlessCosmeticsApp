@@ -23,6 +23,7 @@
     </div>
 </nav>
 
+
 <div class="jumbotron">
     <div class="row">
         <div class="container">
@@ -33,7 +34,10 @@
         </div>
     </div>
 </div>
-<div class="alert alert-danger" role="alert">
+
+
+
+<div class="alert alert-danger " role="alert ">
     <ul>
         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
         <li> <strong> {{ message }}</strong></li>
@@ -41,37 +45,43 @@
     </ul>
 </div>
 
-
-<div class="container">
-    <div class="col-lg-3 col-md-4 col-xs-6">
-        <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src=../static/images/brush.jpg width="400" height="300" alt="">
+<div class="container b-fluid ">
+    <div class="col-lg-3 col-md-4 col-xs-6 ">
+        <a href="# " class="d-block mb-4 h-100 ">
+            <img class="img-fluid img-thumbnail " src=../static/images/brush.jpg width="400 " height="300 " alt=" ">
         </a>
     </div>
-    <div class="col-lg-3 col-md-4 col-xs-6">
-        <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src=../static/images/lipstick.jpg width="400" height="300" alt="">
+    <div class="col-lg-3 col-md-4 col-xs-6 ">
+        <a href="# " class="d-block mb-4 h-100 ">
+            <img class="img-fluid img-thumbnail " src=../static/images/lipstick.jpg width="400 " height="300 " alt=" ">
         </a>
     </div>
-    <div class="col-lg-3 col-md-4 col-xs-6">
-        <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src=../static/images/eyeshadow.jpg width="400" height="300" alt="">
+    <div class="col-lg-3 col-md-4 col-xs-6 ">
+        <a href="# " class="d-block mb-4 h-100 ">
+            <img class="img-fluid img-thumbnail " src=../static/images/eyeshadow.jpg width="400 " height="300 " alt=" ">
         </a>
     </div>
-    <div class="col-lg-3 col-md-4 col-xs-6">
-        <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src=../static/images/prettynails.png width="400" height="300" alt="">
+    <div class="col-lg-3 col-md-4 col-xs-6 ">
+        <a href="# " class="d-block mb-4 h-100 ">
+            <img class="img-fluid img-thumbnail " src=../static/images/prettynails.png width="400 " height="300 " alt=" ">
         </a>
     </div>
 </div>
 <!-- Four equal columns -->
 {% for i in category %}
-<section class="container">
+<section class="container ">
     <div class="col-lg-3 col-md-4 col-xs-6 ">
-        <div class="thumbnail">
-            <div class="caption">
-                <a href="{{url_for('showCategoryItems', category_id = i.id)}}" class="d-block mb-4 h-100">
+        <div class="thumbnail ">
+            <div class="caption ">
+                <a href="{{url_for( 'showCategoryItems', category_id=i .id)}} " class="d-block mb-4 h-100 ">
                     <h3>{{i.name}}</h3>
+                    <a href="{{url_for( 'editCategory', category_id=i .id)}} ">
+                        <button type="button " , class="btn btn-default ">Edit</button></a>
+                    </th>
+                    <a href="{{url_for( 'deleteCategory', category_id=i .id)}} ">
+                        <button type="button " , class="btn btn-default ">Delete</button></a>
+                    </th>
+
                 </a>
                 <p>{{i.description}}</p>
             </div>
@@ -79,6 +89,26 @@
     </div>
     {%endfor%}
 </section>
+
+
+<body>
+    <div class="container-fluid ">
+        <div class="row ">
+            <div class="col-lg-12 ">
+                <h1> Create Category </h1>
+                <form action="{{url_for( 'newCategory', category_id=category, newCatalogItem=category_id) }} " method='POST'>
+                    <p>Name:</p>
+                    <input type="text" class="button-new" name="name">
+                    <input type="submit" class="button-new" value="Create">
+                </form>
+                <div class="button-c ">
+                    <a href="{{url_for( 'showCategories', category=category)}} "> Cancel </a>
+                </div>
+                </form>
+</body>
+
+
+
 
 </body>
 
